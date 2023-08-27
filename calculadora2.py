@@ -2,14 +2,12 @@ import sys
 import time
 import math
 
-# Get the operation and the numbers needed
+# Get the numbers needed
 
 def calculadora ():
     number_1 = int(input("primeiro número: "))
     number_2 = int(input("segundo número: "))
-    print("Escolhe a operação entre soma, diferença, multiplicação, divisão, potencialização e raíz quadrada")
-    operation = input("Qual operação: ") .lower ()
-    operacoes (operation=operation , number_1=number_1 , number_2=number_2)
+
 
 # Get the operations and deal with the numbers
 
