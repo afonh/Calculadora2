@@ -1,10 +1,28 @@
 import math
 import threading
+import argparse
 
-# Get the numbers needed
+# Preparing the software to accept arguments
 
-number_1 = int(input("primeiro número: "))
-number_2 = int(input("segundo número: "))
+parser = argparse.ArgumentParser(description="Calculadora2 accepts 2 numbers passed as arguments")
+parser.add_argument("number_1_arg", nargs="?", default=None, help="Primeiro Número")
+parser.add_argument("number_2_arg", nargs="?", default=None, help="Segundo Número")
+args = parser.parse_args()
+
+# Make it check if the arguments are passed or not or if just one of them are passed
+# If both arguments are passed it will get the numbers automatically
+# If just one argument is passed it will ask for the second number
+# If no arguments are passed it will ask for both numbers
+
+if args.number_1_arg is None and args.number_2_arg is None:
+    number_1 = int(input("primeiro número: "))
+    number_2 = int(input("segundo número: "))
+elif args.number_1_arg is not None and args.number_2_arg is None:
+    number_1 = args.number_1_arg
+    number_2 = int(input("segundo número: "))
+elif args.number_1_arg is not None and args.number_2_arg is not None:
+    number_1 = args.number_1_arg
+    number_2 = args.number_2_arg
 
 
 # Get the numbers and define how the operations are handled
