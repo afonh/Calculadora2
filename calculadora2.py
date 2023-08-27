@@ -2,6 +2,7 @@ import sys
 import time
 import math
 import threading
+import os
 
 # Get the numbers needed
 
@@ -63,28 +64,5 @@ thread_division.join()
 thread_potentiation.join()
 thread_square_root.join()
 
-
-    # Ask user if he wants to do another calculations
-
-def another_operation():
-    another_operation = input("quer fazer outra operação? ")
-    if another_operation.lower() == 'sim':
-        pass
-    elif another_operation.lower() == 'não':
-        sys.exit()
-    else: 
-        print("Ou sim ou não")
-        time.sleep(30)
-        sys.exit()
-
-
-
-
-    
-    
-
-
-
-
-        
+   
     
