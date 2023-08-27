@@ -38,12 +38,12 @@ def square_root_operation(number_1, number_2):
     
 # Defining threads
 
-thread_add = threading.Thread(target=add_operation)
-thread_minus = threading.Thread(target=minus_operation)
-thread_multiply = threading.Thread(target=multiply_operation)
-thread_division = threading.Thread(target=division_operation)
-thread_potentiation = threading.Thread(target=potentiation_operation)
-thread_square_root = threading.Thread(target=square_root_operation)
+thread_add = threading.Thread(target=add_operation, args=(number_1,number_2)) 
+thread_minus = threading.Thread(target=minus_operation, args=(number_1,number_2))
+thread_multiply = threading.Thread(target=multiply_operation, args=(number_1,number_2))
+thread_division = threading.Thread(target=division_operation, args=(number_1,number_2))
+thread_potentiation = threading.Thread(target=potentiation_operation, args=(number_1,number_2))
+thread_square_root = threading.Thread(target=square_root_operation, args=(number_1,number_2))
 
 # Running threads
 
