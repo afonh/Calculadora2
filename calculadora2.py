@@ -18,11 +18,11 @@ if args.number_1_arg is None and args.number_2_arg is None:
     number_1 = int(input("primeiro número: "))
     number_2 = int(input("segundo número: "))
 elif args.number_1_arg is not None and args.number_2_arg is None:
-    number_1 = args.number_1_arg
+    number_1 = int(args.number_1_arg)
     number_2 = int(input("segundo número: "))
 elif args.number_1_arg is not None and args.number_2_arg is not None:
-    number_1 = args.number_1_arg
-    number_2 = args.number_2_arg
+    number_1 = int(args.number_1_arg)
+    number_2 = int(args.number_2_arg)
 
 
 # Get the numbers and define how the operations are handled
