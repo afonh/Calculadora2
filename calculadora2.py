@@ -1,8 +1,5 @@
-import sys
-import time
 import math
 import threading
-import os
 
 # Get the numbers needed
 
