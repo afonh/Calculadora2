@@ -1,60 +1,84 @@
 import sys
 import time
 import math
+import threading
 
 # Get the numbers needed
 
-def calculadora ():
-    number_1 = int(input("primeiro número: "))
-    number_2 = int(input("segundo número: "))
+number_1 = int(input("primeiro número: "))
+number_2 = int(input("segundo número: "))
 
 
-# Get the operations and deal with the numbers
+# Get the numbers and define how the operations are handled
 
-def operacoes (operation , number_1 , number_2):
-    if operation == 'soma':
-        soma = number_1 + number_2
-        mensagem = "A soma de {} + {} = {}" .format(number_1 , number_2, soma)
-        print(soma)
+def add_operation(number_1, number_2):
+    add = number_1 + number_2
+    print("A soma de {} + {} = {}" .format(number_1 , number_2, add))
 
-    elif operation == 'diferença':
-        diferença = number_1 - number_2
-        mensagem = "A diferença de {} - {} = {}" .format(number_1 , number_2 , diferença)
-        print(diferença)
-    elif operation == 'multiplicação':
-        multiplicação = number_1 * number_2
-        mensagem ="O produto de {} x {} = {}"  .format(number_1 , number_2 , multiplicação)
+def minus_operation(number_1, number_2):
+    minus = number_1 - number_2
+    print("A diferença de {} - {} = {}".format(number_1 , number_2 , minus))
 
-    elif operation == 'divisão':
-        divisão = number_1 / number_2
-        mensagem = "O quociente de {} / {} = {}" .format(number_1 , number_2 , divisão)
+def multiply_operation(number_1, number_2):
+    multiply = number_1 * number_2
+    print("O produto de {} x {} = {}".format(number_1 , number_2 , multiply))
 
-    elif operation == 'potencialização':
-        potencialização = number_1 ** number_2
-        mensagem = "{} elevado a {} = {}"    .format(number_1 , number_2 , potencialização)
+def division_operation(number_1, number_2):
+    division = number_1 / number_2
+    print("O quociente de {} / {} = {}".format(number_1 , number_2 , division))
 
-    elif operation == 'raíz quadrada':
-        square_root = math.sqrt(number_1)
-        messagem = "A raíz quadrada de {} é {}".format(number_1, square_root)
+def potentiation_operation(number_1, number_2):
+    potentiation = number_1 ** number_2
+    print("{} elevado a {} = {}".format(number_1 , number_2 , potentiation))
+
+def square_root_operation(number_1, number_2):
+    square_root_1 = math.sqrt(number_1)
+    square_root_2 = math.sqrt(number_2)
+    print("A raíz quadrada de {} é {} e de {} é {}".format(number_1, square_root_1, number_2, square_root_2))
     
-    print(mensagem)
+# Defining threads
 
-    # Ask user if he wants to do another calculation
+thread_add = threading.Thread(target=add_operation)
+thread_minus = threading.Thread(target=minus_operation)
+thread_multiply = threading.Thread(target=multiply_operation)
+thread_division = threading.Thread(target=division_operation)
+thread_potentiation = threading.Thread(target=potentiation_operation)
+thread_square_root = threading.Thread(target=square_root_operation)
 
+# Running threads
+
+thread_add.start()
+thread_minus.start()
+thread_multiply.start()
+thread_division.start()
+thread_potentiation.start()
+thread_square_root.start()
+
+# Waiting for the threads to finish
+
+thread_add.join()
+thread_minus.join()
+thread_multiply.join()
+thread_division.join()
+thread_potentiation.join()
+thread_square_root.join()
+
+
+    # Ask user if he wants to do another calculations
+
+def another_operation():
     another_operation = input("quer fazer outra operação? ")
     if another_operation.lower() == 'sim':
-        calculadora()
+        pass
     elif another_operation.lower() == 'não':
         sys.exit()
-
-    # Just here to deal with exceptions
     else: 
         print("Ou sim ou não")
         time.sleep(30)
         sys.exit()
 
 
-calculadora()
+
 
     
     
