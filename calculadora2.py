@@ -1,58 +1,67 @@
-import sys
-import time 
-# Here I got the modules to start my calculator
-def calculadora ():
-    variavel_1 = int(input("primeiro número: "))
-    variavel_2 = int(input("segundo número: "))
-    # Here i decided the variable as "primeiro número" and "segundo número" and the function for below
-    print("Escolhe a operação entre soma diferença multiplicação divisão e potencialização")
-    operacao = input("Qual operação: ") .lower ()
-    operacoes (operacao = operacao , variavel_1=variavel_1 , variavel_2=variavel_2)
-    # Here put the operacao as a variable for "qual operação" and .lower to cut down the chance of someone messing with the script  and to get the "connector between this function and the function below"
+import math
+import threading
 
-def operacoes (operacao , variavel_1 , variavel_2):
-    if operacao == 'soma':
-        soma = variavel_1 + variavel_2
-        mensagem = "A soma de {} + {} = {}" .format(variavel_1 , variavel_2, soma)
-        print(soma)
-        # Here i got the start of the function with the information shared by the last code of the first function and the plus calculator
+# Get the numbers needed
 
-    elif operacao == 'diferença':
-        diferença = variavel_1 - variavel_2
-        mensagem = "A diferença de {} - {} = {}" .format(variavel_1 , variavel_2 , diferença)
-        print(diferença)
-# The minus calculator
-    elif operacao == 'multiplicação':
-        multiplicação = variavel_1 * variavel_2
-        mensagem ="O produto de {} x {} = {}"  .format(variavel_1 , variavel_2 , multiplicação)
-# The multiplication calculator
+number_1 = int(input("primeiro número: "))
+number_2 = int(input("segundo número: "))
 
-    elif operacao == 'divisão':
-        divisão = variavel_1 / variavel_2
-        mensagem = "O quociente de {} / {} = {}" .format(variavel_1 , variavel_2 , divisão)
-# The division calculator
-    elif operacao == 'potencialização':
-        potencialização = variavel_1 ** variavel_2
-        mensagem = "{} elevado a {} = {}"    .format(variavel_1 , variavel_2 , potencialização)
-        # The exponentation calculator
+
+# Get the numbers and define how the operations are handled
+
+def add_operation(number_1, number_2):
+    add = number_1 + number_2
+    print("A soma de {} + {} = {}" .format(number_1 , number_2, add))
+
+def minus_operation(number_1, number_2):
+    minus = number_1 - number_2
+    print("A diferença de {} - {} = {}".format(number_1 , number_2 , minus))
+
+def multiply_operation(number_1, number_2):
+    multiply = number_1 * number_2
+    print("O produto de {} x {} = {}".format(number_1 , number_2 , multiply))
+
+def division_operation(number_1, number_2):
+    division = number_1 / number_2
+    print("O quociente de {} / {} = {}".format(number_1 , number_2 , division))
+
+def potentiation_operation(number_1, number_2):
+    potentiation = number_1 ** number_2
+    print("{} elevado a {} = {}".format(number_1 , number_2 , potentiation))
+
+def square_root_operation(number_1, number_2):
+    square_root_1 = math.sqrt(number_1)
+    square_root_2 = math.sqrt(number_2)
+    print("A raíz quadrada de {} é {} e de {} é {}".format(number_1, square_root_1, number_2, square_root_2))
     
-    print(mensagem)
-    variavel_do_input = input("quer fazer outra operação? ")
-    if variavel_do_input == 'sim' or variavel_do_input == "Sim":
-        calculadora()
-    elif variavel_do_input == 'não' or variavel_do_input == "Não":
-        sys.exit()
-    else: 
-        print("Ou sim ou não")
-        time.sleep(30)
-        sys.exit()
-calculadora()
-# Here is the end with print(message) showing the results and the setup to start another calculation
-    
-    
+# Decided to add multithread support to make the calculations faster
+# I could make it in another way using a lot of the old code but i prefered to make this "cleanner"
 
+# Defining threads
 
+thread_add = threading.Thread(target=add_operation, args=(number_1,number_2)) 
+thread_minus = threading.Thread(target=minus_operation, args=(number_1,number_2))
+thread_multiply = threading.Thread(target=multiply_operation, args=(number_1,number_2))
+thread_division = threading.Thread(target=division_operation, args=(number_1,number_2))
+thread_potentiation = threading.Thread(target=potentiation_operation, args=(number_1,number_2))
+thread_square_root = threading.Thread(target=square_root_operation, args=(number_1,number_2))
 
+# Running threads
 
-        
-    
+thread_add.start()
+thread_minus.start()
+thread_multiply.start()
+thread_division.start()
+thread_potentiation.start()
+thread_square_root.start()
+
+# Waiting for the threads to finish
+
+thread_add.join()
+thread_minus.join()
+thread_multiply.join()
+thread_division.join()
+thread_potentiation.join()
+thread_square_root.join()
+
+   
