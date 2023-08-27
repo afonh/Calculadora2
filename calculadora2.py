@@ -27,14 +27,13 @@ def operacoes (operation , number_1 , number_2):
         multiplicação = number_1 * number_2
         mensagem ="O produto de {} x {} = {}"  .format(number_1 , number_2 , multiplicação)
 
-
     elif operation == 'divisão':
         divisão = number_1 / number_2
         mensagem = "O quociente de {} / {} = {}" .format(number_1 , number_2 , divisão)
+
     elif operation == 'potencialização':
         potencialização = number_1 ** number_2
         mensagem = "{} elevado a {} = {}"    .format(number_1 , number_2 , potencialização)
-        # The exponentation calculator
 
     elif operation == 'raíz quadrada':
         square_root = math.sqrt(number_1)
