@@ -37,6 +37,9 @@ def square_root_operation(number_1, number_2):
     square_root_2 = math.sqrt(number_2)
     print("A raíz quadrada de {} é {} e de {} é {}".format(number_1, square_root_1, number_2, square_root_2))
     
+# Decided to add multithread support to make the calculations faster
+# I could make it in another way using a lot of the old code but i prefered to make this "cleanner"
+
 # Defining threads
 
 thread_add = threading.Thread(target=add_operation, args=(number_1,number_2)) 
@@ -65,4 +68,3 @@ thread_potentiation.join()
 thread_square_root.join()
 
    
-    
