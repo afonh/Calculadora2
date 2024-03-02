@@ -15,14 +15,14 @@ args = parser.parse_args()
 # If no arguments are passed it will ask for both numbers
 
 if args.number_1_arg is None and args.number_2_arg is None:
-    number_1 = int(input("primeiro número: "))
-    number_2 = int(input("segundo número: "))
+    number_1 = float(input("primeiro número: "))
+    number_2 = float(input("segundo número: "))
 elif args.number_1_arg is not None and args.number_2_arg is None:
-    number_1 = int(args.number_1_arg)
-    number_2 = int(input("segundo número: "))
+    number_1 = float(args.number_1_arg)
+    number_2 = float(input("segundo número: "))
 elif args.number_1_arg is not None and args.number_2_arg is not None:
-    number_1 = int(args.number_1_arg)
-    number_2 = int(args.number_2_arg)
+    number_1 = float(args.number_1_arg)
+    number_2 = float(args.number_2_arg)
 
 
 # Get the numbers and define how the operations are handled
